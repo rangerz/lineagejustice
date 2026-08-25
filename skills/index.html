@@ -214,7 +214,6 @@ function render(){
         <span class="cnt">${a} 主動 · ${p} 被動</span>
       </div>`;
     const body = items.map(r=>{
-      const kindPill = r.kind==='active' ? `<span class="pill active">主動</span>` : `<span class="pill passive">被動</span>`;
       let gcell;
       if(r.kind==='active'){ const gs=gradeStyle(r.grade);
         gcell = `<span class="gbadge" style="--gr:${gs.c};--gr-bg:${gs.bg};--gr-line:${gs.line}">${r.grade===10?'高階':r.grade+' 階'}</span>`;
@@ -230,7 +229,6 @@ function render(){
         <td class="c-icon">${r.icon?`<img loading="lazy" src="${r.icon}" alt="">`:''}</td>
         <td class="c-name"><div class="name-tw">${esc(r.tw)}</div><div class="name-en">${esc(r.en)}</div></td>
         <td class="c-grade">${gcell}</td>
-        <td>${kindPill}</td>
         <td class="type">${esc(r.type)||'<span style=opacity:.4>—</span>'}</td>
         <td class="${costCls}">${esc(r.cost)}</td>
         <td class="dur">${esc(r.duration)||'—'}</td>
@@ -238,7 +236,7 @@ function render(){
       </tr>`;
     }).join('');
     return head + `<div class="tscroll"><table>
-      <thead><tr><th>圖示</th><th>名稱（中／英）</th><th>等級</th><th>類別</th><th>類型</th><th>消耗</th><th>持續時間</th><th>效果</th></tr></thead>
+      <thead><tr><th>圖示</th><th>名稱（中／英）</th><th>等級</th><th>類型</th><th>消耗</th><th>持續時間</th><th>效果</th></tr></thead>
       <tbody>${body}</tbody></table></div>`;
   }).join('');
 
