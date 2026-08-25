@@ -139,7 +139,7 @@
   <header>
     <div class="eyebrow">Lineage · 天堂客戶端技能資料庫</div>
     <h1>職業技能全書</h1>
-    <p class="sub">八大職業共 266 項技能：216 個主動技能與 50 個被動技能。名稱（繁中／英文／韓文／日文）、等級、類型、屬性（陣營與元素）、消耗、射程、持續時間、延遲皆取自天堂客戶端原始資料。用下方職業與類別篩選，或直接搜尋。</p>
+    <p class="sub">八大職業共 266 項技能：216 個主動技能與 50 個被動技能。名稱（繁中／簡中／英文／韓文／日文）、等級、類型、屬性（陣營與元素）、消耗、射程、持續時間、延遲皆取自天堂客戶端原始資料。用下方職業與類別篩選，或直接搜尋。</p>
     <div class="stats" id="stats"></div>
   </header>
 
@@ -203,7 +203,7 @@ function render(){
   const rows = ROWS.filter(r=>{
     if(state.job!=='all' && r.job!==state.job) return false;
     if(state.kind!=='all' && r.kind!==state.kind) return false;
-    if(q){ const hay=[r.tw,r.en,r.ko,r.ja,r.type,r.effect,r.target,r.catalyst].join(' ').toLowerCase();
+    if(q){ const hay=[r.tw,r.cn,r.en,r.ko,r.ja,r.type,r.effect,r.target,r.catalyst].join(' ').toLowerCase();
       if(!hay.includes(q)) return false; }
     return true;
   });
@@ -241,7 +241,7 @@ function render(){
       const itemHtml = r.catalyst?`<div class="item"><span class="ilbl">道具</span>${esc(r.catalyst)}</div>`:'';
       return `<tr>
         <td class="c-icon">${r.icon?`<img loading="lazy" src="${r.icon}" alt="">`:''}</td>
-        <td class="c-name"><div class="name-tw">${esc(r.tw)}</div><div class="name-en">${esc(r.en)}</div><div class="name-ko">${esc(r.ko)}</div><div class="name-ja">${esc(r.ja)}</div></td>
+        <td class="c-name"><div class="name-tw">${esc(r.tw)}</div><div class="name-cn">${esc(r.cn)}</div><div class="name-en">${esc(r.en)}</div><div class="name-ko">${esc(r.ko)}</div><div class="name-ja">${esc(r.ja)}</div></td>
         <td class="c-grade">${gcell}</td>
         <td class="type">${esc(r.type)||'<span style=opacity:.4>—</span>'}</td>
         <td class="c-attr">${alignPill(r.align)}${elemBadge(r.element)}</td>
@@ -253,7 +253,7 @@ function render(){
       </tr>`;
     }).join('');
     return head + `<div class="tscroll"><table>
-      <thead><tr><th>圖示</th><th>名稱（中／英／韓／日）</th><th>等級</th><th>類型</th><th>屬性</th><th>消耗</th><th>射程</th><th>持續時間</th><th>延遲</th><th>效果</th></tr></thead>
+      <thead><tr><th>圖示</th><th>名稱（繁／簡／英／韓／日）</th><th>等級</th><th>類型</th><th>屬性</th><th>消耗</th><th>射程</th><th>持續時間</th><th>延遲</th><th>效果</th></tr></thead>
       <tbody>${body}</tbody></table></div>`;
   }).join('');
 
